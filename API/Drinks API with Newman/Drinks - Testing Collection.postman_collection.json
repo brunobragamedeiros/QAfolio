@@ -1,0 +1,322 @@
+{
+	"info": {
+		"_postman_id": "c24cbe74-02a1-47bc-9cd3-c4e4a72140d4",
+		"name": "Drinks - Testing Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET",
+			"item": [
+				{
+					"name": "Get Random",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 800ms\", () => {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(800);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is not empty\", function () {\r",
+									"    pm.expect(responseJson).to.be.not.empty;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{drinks_url}}/random.php",
+							"host": [
+								"{{drinks_url}}"
+							],
+							"path": [
+								"random.php"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get By ID",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 800ms\", () => {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(800);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is not empty\", function () {\r",
+									"    pm.expect(responseJson).to.be.not.empty;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has the expected value\", function () {\r",
+									"    pm.expect(responseJson.drinks[0].idDrink).to.eql(\"11007\");\r",
+									"    pm.expect(responseJson.drinks[0].strDrink).to.eql(\"Margarita\");\r",
+									"    pm.expect(responseJson.drinks[0].strIBA).to.eql(\"Contemporary Classics\");\r",
+									"    pm.expect(responseJson.drinks[0].strGlass).to.eql(\"Cocktail glass\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{drinks_url}}/lookup.php?i=11007",
+							"host": [
+								"{{drinks_url}}"
+							],
+							"path": [
+								"lookup.php"
+							],
+							"query": [
+								{
+									"key": "i",
+									"value": "11007"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get By Ingredient",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is not empty\", function () {\r",
+									"    pm.expect(responseJson).to.be.not.empty;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Content-Type header is present\", () => {\r",
+									"  pm.response.to.have.header(\"Content-Type\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has the expected type\", function () {\r",
+									"    pm.expect(responseJson).to.be.an(\"object\");\r",
+									"    pm.expect(responseJson.drinks[0].strDrink).to.be.an(\"string\");\r",
+									"    pm.expect(responseJson.drinks[0].strDrinkThumb).to.be.an(\"string\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{drinks_url}}/filter.php?i=Wine",
+							"host": [
+								"{{drinks_url}}"
+							],
+							"path": [
+								"filter.php"
+							],
+							"query": [
+								{
+									"key": "i",
+									"value": "Wine"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Categories",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 800ms\", () => {\r",
+									"  pm.expect(pm.response.responseTime).to.be.below(800);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is not empty\", function () {\r",
+									"    pm.expect(responseJson).to.be.not.empty;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response length is 11\", function () {\r",
+									"    pm.expect(responseJson.drinks.length).to.eql(11);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has the expected value\", function () {\r",
+									"    pm.expect(responseJson.drinks[0].strCategory).to.eql(\"Ordinary Drink\");\r",
+									"    pm.expect(responseJson.drinks[1].strCategory).to.eql(\"Cocktail\");\r",
+									"    pm.expect(responseJson.drinks[2].strCategory).to.eql(\"Milk / Float / Shake\");\r",
+									"    pm.expect(responseJson.drinks[3].strCategory).to.eql(\"Other/Unknown\");\r",
+									"    pm.expect(responseJson.drinks[4].strCategory).to.eql(\"Cocoa\");\r",
+									"    pm.expect(responseJson.drinks[5].strCategory).to.eql(\"Shot\");\r",
+									"    pm.expect(responseJson.drinks[6].strCategory).to.eql(\"Coffee / Tea\");\r",
+									"    pm.expect(responseJson.drinks[7].strCategory).to.eql(\"Homemade Liqueur\");\r",
+									"    pm.expect(responseJson.drinks[8].strCategory).to.eql(\"Punch / Party Drink\");\r",
+									"    pm.expect(responseJson.drinks[9].strCategory).to.eql(\"Beer\");\r",
+									"    pm.expect(responseJson.drinks[10].strCategory).to.eql(\"Soft Drink / Soda\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{drinks_url}}/list.php?c=list",
+							"host": [
+								"{{drinks_url}}"
+							],
+							"path": [
+								"list.php"
+							],
+							"query": [
+								{
+									"key": "c",
+									"value": "list"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

@@ -11,4 +11,4 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run API Tests
-        run: newman run "Drinks - Testing Collection.postman_collection.json" -e "Local Env for Drinks.postman_environment.json"
+        run: newman run "Drinks - Testing Collection.postman_collection.json" -e "DrinksEnv.postman_environment.json"

@@ -12,3 +12,4 @@ jobs:
 
       - name: Run API Tests
         run: newman run "Drinks - Testing Collection.postman_collection.json" -e "DrinksEnv.postman_environment.json"
+ 

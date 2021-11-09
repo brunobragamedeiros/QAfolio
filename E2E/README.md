@@ -1,4 +1,4 @@
-# QAfolio - API
+# QAfolio - E2E
 
 Now let's talk about E2E automation!
 

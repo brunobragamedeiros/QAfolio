@@ -1,3 +1,5 @@
+# QAfolio - MANUAL
+
 Thinking about how I would show some of my abilities in testing was a cool and hard process. I must confess that it took me some time to create the manual testing showcase part of my portfolio. My main concern was: if I document the process too much I may be seen as a boring and slow-moving tester (I am not!) but if I do not document... what will I show?
 
 I really tried my best to keep it simple and focused and I hope you guys like it.

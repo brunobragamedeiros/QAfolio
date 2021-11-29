@@ -1,0 +1,9 @@
+{
+    "viewportHeight": 720,
+    "viewportWidth": 1280,
+    "baseUrl": "https://www.cypress.io/",
+    "retries": {
+        "runMode": 1,
+        "openMode": 1
+    }
+}
